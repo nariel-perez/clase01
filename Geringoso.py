@@ -1,4 +1,4 @@
-cadena=str(input('que palabra?: '))
+cadena='geringoso'
 
 new=''
 
