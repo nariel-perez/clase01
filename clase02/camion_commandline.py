@@ -1,13 +1,11 @@
-####CLASE 02####
+#%% 1 Ejercicio 2.10
 
-#%% 1 Ejercicio 2.8 y 2.9 : Lectura de un archivo de datos
-########################### modificado para usar el modulo csv
 import csv
-
+import sys
 
 def costo_camion(nombre_archivo):
     total=0.0
-    f=open('../Data/'+str(nombre_archivo))
+    f=open(str(nombre_archivo))
     rows=csv.reader(f)
     header=next(rows)
     header
@@ -24,12 +22,18 @@ def costo_camion(nombre_archivo):
         except ValueError:
             print(f'Warning:datos faltantes para {row0}')
     #print(total)
-    print(f'Costo total {total:.2f} ')    
-    f.close()
-
-
-
-costo_camion('camion.csv')
-
-
+    return total
     
+    f.close()
+    
+
+
+
+if len(sys.argv)==2:
+    nombre_archivo=sys.argv[1]
+else:
+    nombre_archivo='../Data/camion.csv'
+
+
+costo_total=costo_camion(nombre_archivo)   
+print(f'Costo total {costo_total:.2f} ') 
